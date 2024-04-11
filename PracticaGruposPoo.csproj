@@ -43,8 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Informacion_Nutricional.cs" />
+    <Compile Include="Materiales.cs" />
+    <Compile Include="MaterialesPreciosos.cs" />
+    <Compile Include="Producto.cs" />
+    <Compile Include="ProductosAlimenticios.cs" />
+    <Compile Include="ProductosElectronicos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Admin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
