@@ -16,7 +16,7 @@ namespace PracticaGruposPoo
 
         //constructor de la clase MaterialesPreciosos
 
-        public MaterialesPreciosos(int tipo_producto, string nombre_producto, int unidades_producto, double precio_unidad_producto, string descripcion_producto, Materiales info_materiales, int peso) : base(tipo_producto, nombre_producto, unidades_producto, precio_unidad_producto, descripcion_producto)
+        public MaterialesPreciosos(int id, int tipo_producto, string nombre_producto, int unidades_producto, double precio_unidad_producto, string descripcion_producto, Materiales info_materiales, int peso) : base(id, tipo_producto, nombre_producto, unidades_producto, precio_unidad_producto, descripcion_producto)
         {
             this.tipo_producto = 1;
             this.info_material = info_material;
@@ -37,6 +37,15 @@ namespace PracticaGruposPoo
         {
             base.MostrarProducto();
             info_material.MostrarMateriales();
+        }
+
+        //metodo que utiliza el de clase padre producto para mostrar tambien los atributos propios de la clase MaterialesPreciosos
+
+        public override void SolicitarDetalles()
+        {
+            base.MostrarProducto();
+            Console.WriteLine("Material: " + info_material);
+            Console.WriteLine("Peso: " + peso);
         }
     }
 }

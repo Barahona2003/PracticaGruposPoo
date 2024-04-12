@@ -14,7 +14,7 @@ namespace PracticaGruposPoo
 
     //constructor de la clase ProductosAlimenticios
 
-        public ProductosAlimenticios(int tipo_producto, string nombre_producto, int unidades_producto, double precio_unidad_producto, string descripcion_producto, Informacion_Nutricional info_nutricional) : base(tipo_producto, nombre_producto, unidades_producto, precio_unidad_producto, descripcion_producto)
+        public ProductosAlimenticios(int id, int tipo_producto, string nombre_producto, int unidades_producto, double precio_unidad_producto, string descripcion_producto, Informacion_Nutricional info_nutricional) : base( id, tipo_producto, nombre_producto, unidades_producto, precio_unidad_producto, descripcion_producto)
         {
             this.tipo_producto = 2;
             this.info_nutricional = info_nutricional;
@@ -33,6 +33,13 @@ namespace PracticaGruposPoo
         {
             base.MostrarProducto();
             info_nutricional.MostrarInformacionNutricional(); 
+        }
+
+        //metodo para solicitar los detalles del producto por pantalla
+        public override void SolicitarDetalles()
+        {
+            base.SolicitarDetalles();
+            info_nutricional.MostrarInformacionNutricional();
         }
     }
 }

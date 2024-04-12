@@ -23,5 +23,22 @@ namespace PracticaGruposPoo
             this.Precargado = Precargado;
         }
 
+        //metodo que utiliza el de clase padre producto para mostrar tambien los atributos propios de la clase ProductosElectronicos
+
+        public override void MostrarProducto()
+        {
+            base.MostrarProducto();
+            Console.WriteLine("Tiene bateria: " + tiene_bateria);
+            Console.WriteLine("Precargado: " + Precargado);
+        }
+
+        //metodo que utiliza el de clase padre producto para solicitar tambien los atributos propios de la clase ProductosElectronicos
+        public override void SolicitarDetalles()
+        {
+            base.MostrarProducto();
+            Console.WriteLine("Tiene bateria: " + tiene_bateria);
+            Console.WriteLine("Precargado: " + Precargado);
+        }
+
     }
 }
