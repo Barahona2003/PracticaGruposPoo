@@ -16,7 +16,7 @@ namespace PracticaGruposPoo
 
         //constructor de la clase ProductosElectronicos
 
-        public ProductosElectronicos(int tipo_producto, string nombre_producto, int unidades_producto, double precio_unidad_producto, string descripcion_producto, bool tiene_bateria, bool Precargado) : base(tipo_producto, nombre_producto, unidades_producto, precio_unidad_producto, descripcion_producto)
+        public ProductosElectronicos(int id, int tipo_producto, string nombre_producto, int unidades_producto, double precio_unidad_producto, string descripcion_producto, bool tiene_bateria, bool Precargado) : base(id, tipo_producto, nombre_producto, unidades_producto, precio_unidad_producto, descripcion_producto)
         {
             this.tipo_producto = 3;
             this.tiene_bateria = tiene_bateria;

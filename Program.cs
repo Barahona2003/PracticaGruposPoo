@@ -215,15 +215,11 @@ namespace PracticaGruposPoo
         }
 
         //Clave de Administrador == Admin1234
-        private static void CargaCompletaProducto()
+        private static bool CargaCompletaProducto()
         {
-            Console.WriteLine("Introduce la clave de administrador:");
-            string clave = Console.ReadLine();
+            
 
-            if (clave == "Admin1234")
-            {
-
-                bool ProductosCargados = false;
+            bool ProductosCargados = false;
                 try
                 {
                     if (File.Exists("Productos.txt"))
@@ -268,12 +264,10 @@ namespace PracticaGruposPoo
                 {
                     Console.WriteLine("Error de E/S" + ex.Message);
                 }
+                
                 return ProductosCargados;
-            }
-            else
-            {
-                Console.WriteLine("Clave de administrador incorrecta");
-            }
+            
+           
         }
     }
 }
