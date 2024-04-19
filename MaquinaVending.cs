@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,61 +10,91 @@ namespace PracticaGruposPoo
 {
     internal class MaquinaVending
     {
+        private static List<Producto> listaProductos; // 12 slots de productos, con x stock por producto
+
+        public MaquinaVending() 
+        {
+            listaProductos = new List<Producto>();
+        }
+
         public static void ComprarProducto()
         {
             // Función para comprar un producto me diante un bluce while
             bool seguirComprando = true;
+            double precioTotal = 0;
+            int udsSeleccionadas = 0;
+            bool continuarCompra = true;
 
             while (seguirComprando)
             {
-                // Seleccionar el producto a comprar por parte del usuario
-                Console.WriteLine("Introduce el ID del producto:");
-                int idProducto = Convert.ToInt32(Console.ReadLine());
-
-                // Se pregunta al usuario si desea añadir algun producto adicional
-                Console.WriteLine("¿Quieres añadir otro producto? (1 = sí, 0 = no)");
-                int respuesta = Convert.ToInt32(Console.ReadLine());
-
-                if (respuesta == 1)
+                //Se muestra al usuario los diferentes productos de la máquina
+                foreach (Producto p in listaProductos)
                 {
-                    // Continuar comprando
-                    Console.WriteLine("Introduce el ID del producto a añadir:");
-                    int idProductoAdicional = Convert.ToInt32(Console.ReadLine());
+                    p.MostrarProductoDisponible();  
+                }
 
+                do
+                {
+                    // Seleccionar el producto a comprar por parte del usuario
+                    Console.WriteLine("Introduce el ID del producto:");
+                    int idProducto = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Selecciona el número de unidades que desea: ");
+                    udsSeleccionadas = int.Parse(Console.ReadLine());
+                    for (int i = listaProductos.Count - 1; i >= 0; i--)
+                    {
+                        Producto p = listaProductos[i];
+                        if (p.id == idProducto)
+                        {
+                            Console.WriteLine("Añadiendo producto a la cesta");
+                            precioTotal = p.precioUnidadProducto * udsSeleccionadas;
+                        }
+                    }
+
+                    // Se pregunta al usuario si desea añadir algun producto adicional
+                    Console.WriteLine("¿Quieres añadir otro producto? (1 = sí, 0 = no)");
+                    int respuesta = int.Parse(Console.ReadLine());
+
+                    //Finalizamos compra y procedemos al pago
+                    if (respuesta == 0)
+                    {
+                        continuarCompra = false;
+
+                    }
+                    
+
+                } while (continuarCompra);
+
+                // Seleccionar el método de pago
+                Console.WriteLine("Selecciona el método de pago: ");
+                Console.WriteLine("1. Tarjeta");
+                Console.WriteLine("2. Efectivo");
+                int metodoPago = Convert.ToInt32(Console.ReadLine());
+
+                if (metodoPago == 1)
+                {
+                    // Metodo para el pago con tarjeta
+                    Console.WriteLine("Introduce el número de tarjeta:");
+                    string numeroTarjeta = Console.ReadLine();
+                    Console.WriteLine("Introduce el PIN:");
+                    string pin = Console.ReadLine();
+                    Console.WriteLine("Introduce el nombre del propietario:");
+                    string nombrePropietario = Console.ReadLine();
+                    // Lógica para procesar el pago con tarjeta
+                }
+                else if (metodoPago == 2)
+                {
+
+                    // Metodo de pago en efectivo
+                    Console.WriteLine("Introduce la cantidad de efectivo:");
+                    double cantidadEfectivo = Convert.ToDouble(Console.ReadLine());
                 }
                 else
                 {
-                    // Seleccionar el método de pago
-                    Console.WriteLine("Selecciona el método de pago: ");
-                    Console.WriteLine("1. Tarjeta");
-                    Console.WriteLine("2. Efectivo");
-                    int metodoPago = Convert.ToInt32(Console.ReadLine());
-
-                    if (metodoPago == 1)
-                    {
-                        // Metodo para el pago con tarjeta
-                        Console.WriteLine("Introduce el número de tarjeta:");
-                        string numeroTarjeta = Console.ReadLine();
-                        Console.WriteLine("Introduce el PIN:");
-                        string pin = Console.ReadLine();
-                        Console.WriteLine("Introduce el nombre del propietario:");
-                        string nombrePropietario = Console.ReadLine();
-                        // Lógica para procesar el pago con tarjeta
-                    }
-                    else if (metodoPago == 2)
-                    {
-
-                        // Metodo de pago en efectivo
-                        Console.WriteLine("Introduce la cantidad de efectivo:");
-                        double cantidadEfectivo = Convert.ToDouble(Console.ReadLine());
-                    }
-                    else
-                    {
-                        Console.WriteLine("Opción inválida.");
-                    }
-
-                    seguirComprando = false; // Salir del bucle de compra
+                    Console.WriteLine("Opción inválida.");
                 }
+
+                seguirComprando = false; // Salir del bucle de compra
+
             }
         }
 

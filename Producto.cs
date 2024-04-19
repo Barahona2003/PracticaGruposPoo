@@ -17,7 +17,7 @@ namespace PracticaGruposPoo
 
         private int unidadesProducto { get; set; }
 
-        private double precioUnidadProducto { get; set; }
+        public double precioUnidadProducto { get; private set; }
 
         private string descripcionProducto { get; set; }
 
@@ -39,6 +39,14 @@ namespace PracticaGruposPoo
         //metodos de la clase productos
 
         //mostrar producto
+
+        public virtual void MostrarProductoDisponible()
+        {
+            Console.WriteLine("Id: " + id);
+            Console.WriteLine("Nombre: " + nombreProducto);
+            Console.WriteLine("Unidades disponibles: " + unidadesProducto);
+            Console.WriteLine("Precio: " + precioUnidadProducto);
+        }
 
         public virtual void MostrarProducto()
         {
