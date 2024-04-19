@@ -14,6 +14,8 @@ namespace PracticaGruposPoo
         static void Main(string[] args)
         {
             listaProductos = new List<Producto>();
+
+            Console.WriteLine("Hola");
             
             //menu de seleccion de 5 opciones 
             int opcion = 0;
