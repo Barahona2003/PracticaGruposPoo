@@ -10,17 +10,17 @@ namespace PracticaGruposPoo
     {
         //atributos propios de la clase ProductosElectronicos
 
-        public bool tiene_bateria { get; set; }
+        public bool tieneBateria { get; set; }
 
-        public bool Precargado { get; set; }
+        public bool precargado { get; set; }
 
         //constructor de la clase ProductosElectronicos
 
-        public ProductosElectronicos(int tipo_producto, string nombre_producto, int unidades_producto, double precio_unidad_producto, string descripcion_producto, bool tiene_bateria, bool Precargado) : base(tipo_producto, nombre_producto, unidades_producto, precio_unidad_producto, descripcion_producto)
+        public ProductosElectronicos(int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, bool tieneBateria, bool Precargado) : base(tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
         {
-            this.tipo_producto = 3;
-            this.tiene_bateria = tiene_bateria;
-            this.Precargado = Precargado;
+            this.tipoProducto = 3;
+            this.tieneBateria = tieneBateria;
+            this.precargado = Precargado;
         }
 
         //metodo que utiliza el de clase padre producto para mostrar tambien los atributos propios de la clase ProductosElectronicos
@@ -28,16 +28,16 @@ namespace PracticaGruposPoo
         public override void MostrarProducto()
         {
             base.MostrarProducto();
-            Console.WriteLine("Tiene bateria: " + tiene_bateria);
-            Console.WriteLine("Precargado: " + Precargado);
+            Console.WriteLine("Tiene bateria: " + tieneBateria);
+            Console.WriteLine("Precargado: " + precargado);
         }
 
         //metodo que utiliza el de clase padre producto para solicitar tambien los atributos propios de la clase ProductosElectronicos
         public override void SolicitarDetalles()
         {
             base.MostrarProducto();
-            Console.WriteLine("Tiene bateria: " + tiene_bateria);
-            Console.WriteLine("Precargado: " + Precargado);
+            Console.WriteLine("Tiene bateria: " + tieneBateria);
+            Console.WriteLine("Precargado: " + precargado);
         }
 
     }

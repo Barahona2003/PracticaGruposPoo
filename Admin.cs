@@ -12,14 +12,14 @@ namespace PracticaGruposPoo
 
         public string nombre { get; set; }
 
-        public string clave_acceso { get; set; }
+        public string claveAcceso { get; set; }
 
         //constructor de la clase Admin
 
-        public Admin(string nombre, string clave_acceso)
+        public Admin(string nombre, string claveAcceso)
         {
             this.nombre = nombre;
-            this.clave_acceso = clave_acceso;
+            this.claveAcceso = claveAcceso;
         }
 
 

@@ -10,17 +10,18 @@ namespace PracticaGruposPoo
     {
         //atributos propios de la clase Materiales Preciosos
 
-        public Materiales info_material { get; set; }
+        public Materiales infoMaterial { get; set; }
 
         private int peso { get; set; }
 
         //constructor de la clase MaterialesPreciosos
 
-        public MaterialesPreciosos(int id, int tipo_producto, string nombre_producto, int unidades_producto, double precio_unidad_producto, string descripcion_producto, Materiales info_materiales, int peso) : base(id, tipo_producto, nombre_producto, unidades_producto, precio_unidad_producto, descripcion_producto)
+        public MaterialesPreciosos(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, Materiales infoMateriales, int peso/*, List<Producto> listaProductos*/) : base(id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto/*, listaProductos*/)
         {
-            this.tipo_producto = 1;
-            this.info_material = info_material;
+            this.tipoProducto = 1;
+            this.infoMaterial = infoMaterial;
             this.peso = peso;
+            //id = listaProductos.Count;
             
         }
 
@@ -36,7 +37,7 @@ namespace PracticaGruposPoo
         public override void MostrarProducto()
         {
             base.MostrarProducto();
-            info_material.MostrarMateriales();
+            infoMaterial.MostrarMateriales();
         }
 
         //metodo que utiliza el de clase padre producto para mostrar tambien los atributos propios de la clase MaterialesPreciosos
@@ -44,7 +45,7 @@ namespace PracticaGruposPoo
         public override void SolicitarDetalles()
         {
             base.MostrarProducto();
-            Console.WriteLine("Material: " + info_material);
+            Console.WriteLine("Material: " + infoMaterial);
             Console.WriteLine("Peso: " + peso);
         }
     }

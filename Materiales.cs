@@ -12,22 +12,23 @@ namespace PracticaGruposPoo
 
         public string material { get; set; }
 
-        public bool SePuedeReciclar { get; set; }
+        public bool sePuedeReciclar { get; set; }
 
-        public string RequisitosEspecificos { get; set; }
+        public string requisitosEspecificos { get; set; }
 
         //constructor de la clase Materiales
 
-        public Materiales(string material, bool SePuedeReciclar, string RequisitosEspecificos)
+        public Materiales(string material, bool sePuedeReciclar, string requisitosEspecificos)
         {
             this.material = material;
-            this.SePuedeReciclar = SePuedeReciclar;
-            this.RequisitosEspecificos = RequisitosEspecificos;
+            this.sePuedeReciclar = sePuedeReciclar;
+            this.requisitosEspecificos = requisitosEspecificos;
         }
 
         public override string ToString()
         {
-            return "\nMaterial: " + material + "\n Se puede reciclar: " + SePuedeReciclar + " \nRequisitos Especificos: " + RequisitosEspecificos;
+            return "\nMaterial: " + material + "\n Se puede reciclar: " + 
+                sePuedeReciclar + " \nRequisitos Especificos: " + requisitosEspecificos;
         }
 
         public void MostrarMateriales()
