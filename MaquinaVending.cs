@@ -27,14 +27,14 @@ namespace PracticaGruposPoo
 
             while (seguirComprando)
             {
-                //Se muestra al usuario los diferentes productos de la máquina
-                foreach (Producto p in listaProductos)
+                do      //Entramos dentro del bucle do-while que se seguirá ejecutando mientras la var bool sea true
                 {
-                    p.MostrarProductoDisponible();  
-                }
+                    //Se muestra al usuario los diferentes productos de la máquina
+                    foreach (Producto p in listaProductos)
+                    {
+                        p.MostrarProductoDisponible();
+                    }
 
-                do
-                {
                     // Seleccionar el producto a comprar por parte del usuario
                     Console.WriteLine("Introduce el ID del producto:");
                     int idProducto = int.Parse(Console.ReadLine());
@@ -46,7 +46,7 @@ namespace PracticaGruposPoo
                         if (p.id == idProducto)
                         {
                             Console.WriteLine("Añadiendo producto a la cesta");
-                            precioTotal = p.precioUnidadProducto * udsSeleccionadas;
+                            precioTotal += p.precioUnidadProducto * udsSeleccionadas;
                         }
                     }
 
@@ -65,6 +65,7 @@ namespace PracticaGruposPoo
                 } while (continuarCompra);
 
                 // Seleccionar el método de pago
+                Console.WriteLine("Precio = " + precioTotal + "€");
                 Console.WriteLine("Selecciona el método de pago: ");
                 Console.WriteLine("1. Tarjeta");
                 Console.WriteLine("2. Efectivo");
@@ -83,10 +84,18 @@ namespace PracticaGruposPoo
                 }
                 else if (metodoPago == 2)
                 {
-
+                    double efectivoIntroducido = 0;
+                    double efectivoRestante = precioTotal;
                     // Metodo de pago en efectivo
-                    Console.WriteLine("Introduce la cantidad de efectivo:");
-                    double cantidadEfectivo = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Introduce las monedas (0.01€ (1cent), 0.02€ (2cent), 0.05€ (5cent), 0.10€ (10cent), 0.20€ (20cent), 0.50€ (50cent), 1€, 2€): ");
+                    do
+                    {
+                        Console.WriteLine("Cantidad total a introducir: " + efectivoRestante + "€");
+                        efectivoIntroducido += int.Parse(Console.ReadLine());
+                        efectivoRestante -= efectivoIntroducido;
+                    } while (efectivoRestante > 0);
+                    double cambio = efectivoIntroducido - precioTotal;
+                    Console.WriteLine("Cambio devuelto: " + cambio + "€");
                 }
                 else
                 {
