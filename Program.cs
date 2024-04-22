@@ -16,8 +16,6 @@ namespace PracticaGruposPoo
         {
             listaProductos = new List<Producto>();
             maquinaVending = new MaquinaVending();
-
-            Console.WriteLine("Hola");
             
             //menu de seleccion de 5 opciones 
             int opcion = 0;

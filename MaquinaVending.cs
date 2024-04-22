@@ -148,12 +148,11 @@ namespace PracticaGruposPoo
         //la clave de Administrador es Admin123
         public static void CargaIndividualProducto()
         {
-            Console.WriteLine("Introduce la clave de administrador:");
-            string clave = Console.ReadLine();
+            Admin admin = new Admin("nombreAdmin", "claveAdmin"); // Crear una instancia de la clase Admin
 
-            if (clave == "Admin123")
-            {
-                Console.WriteLine("Clave correcta.");
+            // Llamar al método VerificarContraseña() de la instancia admin
+            admin.VerificarContraseña();
+
                 int opcion = 0;
                 Console.WriteLine("1.Nuevo Material Precioso");
                 Console.WriteLine("2.Nuevo Producto Alimenticio");
@@ -185,24 +184,16 @@ namespace PracticaGruposPoo
                 }
 
 
-            }
-            else
-            {
-                Console.WriteLine("Clave de administradorincorrecta.");
-            }
+            
 
         }
 
         //Clave de Administrador == Admin1234
-        public static void CargaCompletaProducto()
+       /* public static void CargaCompletaProducto()
         {
-            Console.WriteLine("Introduce la clave de administrador:");
-            string clave = Console.ReadLine();
+            
 
-            if (clave == "Admin1234")
-            {
-
-                bool ProductosCargados = false;
+            bool ProductosCargados = false;
                 try
                 {
                     if (File.Exists("Productos.txt"))
@@ -248,11 +239,63 @@ namespace PracticaGruposPoo
                     Console.WriteLine("Error de E/S" + ex.Message);
                 }
                 return ProductosCargados;
-            }
-            else
+            
+            
+        }*/
+
+        public static bool CargaCompletaProducto()
+        {
+            Admin admin = new Admin("nombreAdmin", "claveAdmin"); // Crear una instancia de la clase Admin
+
+            // Llamar al método VerificarContraseña() de la instancia admin
+            admin.VerificarContraseña();
+
+            bool ProductosCargados = false;
+            try
             {
-                Console.WriteLine("Clave de administrador incorrecta");
+                if (File.Exists("Productos.txt"))
+                {
+                    StreamReader sr = new StreamReader("Productos.txt");
+                    string linea;
+                    while ((linea = sr.ReadLine()) != null)
+                    {
+                        ProductosCargados = true;
+                        string[] datos = linea.Split('/');
+                        if (datos[0] == "0")
+                        {
+                            MaterialesPreciosos m = new MaterialesPreciosos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], datos[7], int.Parse(datos[8]));
+                            listaProductos.Add(m);
+                        }
+                        else if (datos[0] == "1")
+                        {
+                            ProductosAlimenticios p = new ProductosAlimenticios(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], datos[7]);
+                            listaProductos.Add(p);
+                        }
+                        else
+                        {
+                            ProductosElectronicos e = new ProductosElectronicos(int.Parse(datos[1]), (datos[2]), int.Parse(datos[3]), double.Parse(datos[4]), (datos[5]), bool.Parse(datos[6]), bool.Parse(datos[7]));
+                        }
+                        sr.Close();
+
+
+
+
+                    }
+                }
+                else
+                {
+                    File.Create("Productos.txt").Close();
+                }
             }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("No se encuentra el archivo de productos: " + ex.Message);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Error de E/S" + ex.Message);
+            }
+            return ProductosCargados;
         }
     }
 }

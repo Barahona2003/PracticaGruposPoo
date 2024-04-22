@@ -22,7 +22,8 @@ namespace PracticaGruposPoo
             this.claveAcceso = claveAcceso;
         }
 
-        //metodo para verificar la contraseña del admin si la contrseña es igual a Admin1234 podra continuar si no se le dara un mensaje de error de contraseña invalida y se le pedira que vuelva a intentarlo
+        //metodo para verificar la contraseña del admin si la contrseña es igual a Admin1234 podra continuar si no se le dara un mensaje de error
+        //de contraseña invalida y se le pedira que vuelva a intentarlo
 
         public void VerificarContraseña()
         {
@@ -42,21 +43,6 @@ namespace PracticaGruposPoo
             } while (contraseña != "Admin1234");
         }
 
-        /*public void VerificarContraseña()
-        {
-            string contraseña;
-            Console.WriteLine("Introduce la contraseña: ");
-            contraseña = Console.ReadLine();
-            if (contraseña == "Admin1234")
-            {
-                Console.WriteLine("Contraseña correcta");
-            }
-            else
-            {
-                Console.WriteLine("Contraseña incorrecta, vuelve a intentarlo");
-                VerificarContraseña();
-            }
-        }*/
 
 
 
