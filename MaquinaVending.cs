@@ -113,11 +113,12 @@ namespace PracticaGruposPoo
             // Mostrar los productos disponibles
             foreach (Producto producto in listaProductos)
             {
-                Console.WriteLine("ID: " + producto.Id);
-                Console.WriteLine("Nombre: " + producto.nombre_producto);
-                Console.WriteLine("Unidades: " + producto.Unidades);
-                Console.WriteLine("Precio: " + producto.Precio);
-                Console.WriteLine("Descripcion: " + producto.Descripcion);
+                Console.WriteLine("ID: " + producto.id);
+                Console.WriteLine("Tipo: " + producto.tipoProducto);
+                Console.WriteLine("Nombre: " + producto.nombreProducto);
+                Console.WriteLine("Unidades: " + producto.unidadesProducto);
+                Console.WriteLine("Precio: " + producto.precioUnidadProducto);
+                Console.WriteLine("Descripcion: " + producto.descripcionProducto);
             }
 
             // Pedir al usuario el ID del producto
@@ -125,17 +126,18 @@ namespace PracticaGruposPoo
             int idProducto = Convert.ToInt32(Console.ReadLine());
 
             // Buscar el producto en la lista de productos
-            Producto productoSeleccionado = listaProductos.FirstOrDefault(p => p.Id == idProducto);
+            Producto productoSeleccionado = listaProductos.FirstOrDefault(p => p.id == idProducto);
 
             if (productoSeleccionado != null)
             {
                 // Mostrar la información del producto
-                Console.WriteLine("Nombre: " + productoSeleccionado.Nombre);
+                Console.WriteLine("Información del producto:");
+                Console.WriteLine("ID: " + productoSeleccionado.id);
+                Console.WriteLine("Tipo de producto: " + productoSeleccionado.tipoProducto);
+                Console.WriteLine("Nombre: " + productoSeleccionado.nombreProducto);
                 Console.WriteLine("Precio: " + productoSeleccionado.Precio);
-                Console.WriteLine("Descripción: " + productoSeleccionado.Descripcion);
-                Console.WriteLine("Cantidad disponible: " + productoSeleccionado.Unidades);
-                Console.WriteLine("Tipo de producto: " + productoSeleccionado.TipoProducto);
-                Console.WriteLine("Categoría: " + productoSeleccionado.Categoria);
+                Console.WriteLine("Descripción: " + productoSeleccionado.descripcionProducto);
+                Console.WriteLine("Cantidad disponible: " + productoSeleccionado.unidadesProducto);
             }
             else
             {
@@ -153,7 +155,9 @@ namespace PracticaGruposPoo
             // Llamar al método VerificarContraseña() de la instancia admin
             admin.VerificarContraseña();
 
-                int opcion = 0;
+            // Si la contraseña es correcta, se permite la carga de productos
+
+            int opcion = 0;
                 Console.WriteLine("1.Nuevo Material Precioso");
                 Console.WriteLine("2.Nuevo Producto Alimenticio");
                 Console.WriteLine("3.Nuevo Producto Electronico");
