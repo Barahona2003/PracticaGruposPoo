@@ -251,7 +251,7 @@ namespace PracticaGruposPoo
                         }
                         else if (datos[0] == "1")
                         {
-                            ProductosAlimenticios p = new ProductosAlimenticios(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], datos[7]);
+                            ProductosAlimenticios p = new ProductosAlimenticios(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), Informacion_Nutrcional.Parse(datos[6]));
                             listaProductos.Add(p);
                         }
                         else
