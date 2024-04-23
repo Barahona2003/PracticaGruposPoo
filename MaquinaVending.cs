@@ -226,7 +226,7 @@ namespace PracticaGruposPoo
                 }*/
 
         }
-
+           
         public static void CargaCompletaProducto()
         {
             Admin admin = new Admin("claveAdmin", listaProductos); // Crear una instancia de la clase Admin

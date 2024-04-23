@@ -12,7 +12,7 @@ namespace PracticaGruposPoo
 
         public string material { get; set; }
 
-        public string sePuedeReciclar { get; set; }
+        public bool sePuedeReciclar { get; set; }
 
         public string requisitosEspecificos { get; set; }
 
@@ -22,7 +22,7 @@ namespace PracticaGruposPoo
 
         public MaterialesPreciosos(int id) : base(id)  { }
 
-        public MaterialesPreciosos(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, string material, string sePuedeReciclar, string requisitosEspecificos, int peso) : 
+        public MaterialesPreciosos(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, string material, bool sePuedeReciclar, string requisitosEspecificos, int peso) : 
             base(id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
         {
             this.tipoProducto = 1;
