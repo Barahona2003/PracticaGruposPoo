@@ -10,16 +10,23 @@ namespace PracticaGruposPoo
     {
         //atributos propios de la clase Productos Alimenticios
 
-        public Informacion_Nutricional infoNutricional { get; set; }
+        public int calorias { get; set; }
+
+        public int azucares { get; set; }
+
+        public int grasas { get; set; }
+
 
         //constructor de la clase ProductosAlimenticios
 
         public ProductosAlimenticios(int id) : base(id) { }
 
-        public ProductosAlimenticios(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, Informacion_Nutricional infoNutricional) : base( id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
+        public ProductosAlimenticios(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, int calorias, int azucares, int grasas) : base( id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
         {
             this.tipoProducto = 2;
-            this.infoNutricional = infoNutricional;
+            this.calorias = calorias;
+            this.azucares = azucares;
+            this.grasas = grasas;
         }
 
         //metodos de la clase ProductosAlimenticios
@@ -34,14 +41,18 @@ namespace PracticaGruposPoo
         public override void MostrarProducto()
         {
             base.MostrarProducto();
-            infoNutricional.MostrarInformacionNutricional(); 
+            Console.WriteLine("Calorias: " + calorias + "kcal");
+            Console.WriteLine("Azúcares: " + azucares + "g");
+            Console.WriteLine("Grasas: " + grasas + "g");
         }
 
         //metodo para solicitar los detalles del producto por pantalla
         public override void SolicitarDetalles()
         {
             base.SolicitarDetalles();
-            infoNutricional.MostrarInformacionNutricional();
+            Console.WriteLine("Calorias: " + calorias + "kcal");
+            Console.WriteLine("Azúcares: " + azucares + "g");
+            Console.WriteLine("Grasas: " + grasas + "g");
         }
     }
 }
