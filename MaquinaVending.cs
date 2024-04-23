@@ -187,7 +187,7 @@ namespace PracticaGruposPoo
         //la clave de Administrador es Admin123
         public static void CargaIndividualProducto()
         {
-            Admin admin = new Admin("nombreAdmin", "claveAdmin"); // Crear una instancia de la clase Admin
+            Admin admin = new Admin("claveAdmin"); // Crear una instancia de la clase Admin
 
             // Llamar al método VerificarContraseña() de la instancia admin
             admin.VerificarContraseña();
@@ -228,7 +228,7 @@ namespace PracticaGruposPoo
 
         public static bool CargaCompletaProducto()
         {
-            Admin admin = new Admin("nombreAdmin", "claveAdmin"); // Crear una instancia de la clase Admin
+            Admin admin = new Admin("claveAdmin"); // Crear una instancia de la clase Admin
 
             // Llamar al método VerificarContraseña() de la instancia admin
             admin.VerificarContraseña();
