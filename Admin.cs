@@ -16,7 +16,6 @@ namespace PracticaGruposPoo
 
         public Admin(string claveAcceso)
         {
-            
             this.claveAcceso = claveAcceso;
         }
 

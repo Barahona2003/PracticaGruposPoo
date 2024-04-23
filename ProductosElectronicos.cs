@@ -18,7 +18,7 @@ namespace PracticaGruposPoo
 
         public ProductosElectronicos(int id) : base(id) { }
 
-        public ProductosElectronicos(int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, bool tieneBateria, bool Precargado) : base(tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
+        public ProductosElectronicos(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, bool tieneBateria, bool Precargado) : base(id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
         {
             this.tipoProducto = 3;
             this.tieneBateria = tieneBateria;
