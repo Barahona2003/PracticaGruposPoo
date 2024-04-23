@@ -10,9 +10,9 @@ namespace PracticaGruposPoo
     {
         //atributos de la clase padre admin
 
-        public string nombre { get; set; }
+        private string nombre { get; set; }
 
-        public string claveAcceso { get; set; }
+        private string claveAcceso { get; set; }
 
         //constructor de la clase Admin
 

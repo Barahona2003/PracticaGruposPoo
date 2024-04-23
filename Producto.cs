@@ -13,13 +13,13 @@ namespace PracticaGruposPoo
         public int id { get; set; }
         public int tipoProducto { get; set; }
 
-        private string nombreProducto { get; set; }
+        public string nombreProducto { get; set; }
 
-        private int unidadesProducto { get; set; }
+        public int unidadesProducto { get; set; }
 
         public double precioUnidadProducto { get; private set; }
 
-        private string descripcionProducto { get; set; }
+        public string descripcionProducto { get; set; }
 
         //List<Producto> listaProductos = new List<Producto>();
 
