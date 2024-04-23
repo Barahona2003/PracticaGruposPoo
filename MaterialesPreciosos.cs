@@ -16,6 +16,8 @@ namespace PracticaGruposPoo
 
         //constructor de la clase MaterialesPreciosos
 
+        public MaterialesPreciosos(int id) : base(id) { }
+
         public MaterialesPreciosos(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, Materiales infoMateriales, int peso/*, List<Producto> listaProductos*/) : base(id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto/*, listaProductos*/)
         {
             this.tipoProducto = 1;

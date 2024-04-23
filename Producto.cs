@@ -25,6 +25,11 @@ namespace PracticaGruposPoo
 
         //metodo constructor de la clase producto
 
+        public Producto(int id)
+        {
+            this.id = id;
+        }
+        
         public Producto(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto/*, List<Producto> listaProductos*/)
         {
             this.id = id;
@@ -50,7 +55,7 @@ namespace PracticaGruposPoo
 
         public virtual void MostrarProducto()
         {
-            
+            Console.WriteLine("ID: " + id);
             Console.WriteLine("Tipo de Producto: " + tipoProducto);
             Console.WriteLine("Nombre del Producto: " + nombreProducto);
             Console.WriteLine("Unidades del Producto: " + unidadesProducto);

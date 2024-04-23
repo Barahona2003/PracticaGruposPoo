@@ -111,22 +111,59 @@ namespace PracticaGruposPoo
         public static void MostrarProducto()
         {
             // Mostrar los productos disponibles
-            foreach (Producto producto in listaProductos)
+            /*foreach (Producto producto in listaProductos)
             {
-                Console.WriteLine("ID: " + producto.id);
-                Console.WriteLine("Tipo: " + producto.tipoProducto);
-                Console.WriteLine("Nombre: " + producto.nombreProducto);
-                Console.WriteLine("Unidades: " + producto.unidadesProducto);
-                Console.WriteLine("Precio: " + producto.precioUnidadProducto);
-                Console.WriteLine("Descripcion: " + producto.descripcionProducto);
+                if (producto is ProductosAlimenticios)
+                {
+                    ((ProductosAlimenticios)producto).MostrarProducto();
+                }
+                if (producto is ProductosElectronicos)
+                {
+                    ((ProductosElectronicos)producto).MostrarProducto();
+                }
+                if (producto is MaterialesPreciosos)
+                {
+                    ((MaterialesPreciosos)producto).MostrarProducto();
+                }
+            }*/
+
+            foreach (Producto producto in listaProductos) //Mostramos cada producto en la lista de productos
+            {
+                producto.MostrarProducto();
             }
 
             // Pedir al usuario el ID del producto
             Console.WriteLine("Introduce el ID del producto:");
-            int idProducto = Convert.ToInt32(Console.ReadLine());
+            int idProducto = int.Parse(Console.ReadLine());
+
+            //Por cada producto en la lista, si la id que hemos introducido coincide con la de algún producto
+            //mostrará su información detallada dependiendo de si es un material precioso, producto alimenticio o producto electrónico
+
+            foreach (Producto producto in listaProductos) 
+            {
+                if (idProducto == producto.id)
+                {
+                    if (producto is ProductosAlimenticios)
+                    {
+                        ((ProductosAlimenticios)producto).MostrarProducto();
+                    }
+                    if (producto is ProductosElectronicos)
+                    {
+                        ((ProductosElectronicos)producto).MostrarProducto();
+                    }
+                    if (producto is MaterialesPreciosos)
+                    {
+                        ((MaterialesPreciosos)producto).MostrarProducto();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Producto no encontrado");
+                }
+            }
 
             // Buscar el producto en la lista de productos
-            Producto productoSeleccionado = listaProductos.FirstOrDefault(p => p.id == idProducto);
+            /*Producto productoSeleccionado = listaProductos.FirstOrDefault(p => p.id == idProducto);
 
             if (productoSeleccionado != null)
             {
@@ -142,7 +179,7 @@ namespace PracticaGruposPoo
             else
             {
                 Console.WriteLine("Producto no encontrado.");
-            }
+            }*/
 
 
         }

@@ -32,7 +32,7 @@ namespace PracticaGruposPoo
             {
                 Console.WriteLine("Introduce la contraseña: ");
                 contraseña = Console.ReadLine();
-                if (contraseña == "Admin1234")
+                if (contraseña == claveAcceso)
                 {
                     Console.WriteLine("Contraseña correcta");
                 }
@@ -40,7 +40,7 @@ namespace PracticaGruposPoo
                 {
                     Console.WriteLine("Contraseña incorrecta, vuelve a intentarlo");
                 }
-            } while (contraseña != "Admin1234");
+            } while (contraseña != claveAcceso);
         }
 
 

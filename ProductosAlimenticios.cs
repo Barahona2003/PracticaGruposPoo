@@ -12,7 +12,9 @@ namespace PracticaGruposPoo
 
         public Informacion_Nutricional infoNutricional { get; set; }
 
-    //constructor de la clase ProductosAlimenticios
+        //constructor de la clase ProductosAlimenticios
+
+        public ProductosAlimenticios(int id) : base(id) { }
 
         public ProductosAlimenticios(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, Informacion_Nutricional infoNutricional) : base( id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
         {
