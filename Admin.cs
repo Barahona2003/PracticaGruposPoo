@@ -45,7 +45,7 @@ namespace PracticaGruposPoo
         public void CargaIndividualProducto()
         {
 
-            VerificarContraseña();
+            //VerificarContraseña();
             int opcion = 0;
 
             do
@@ -102,7 +102,7 @@ namespace PracticaGruposPoo
 
         public bool CargaCompletaProducto()
         {
-            VerificarContraseña();
+            //VerificarContraseña();
             
             bool ProductosCargados = false;
             try
