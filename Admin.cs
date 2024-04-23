@@ -44,43 +44,66 @@ namespace PracticaGruposPoo
 
         public void CargaIndividualProducto()
         {
+
+            VerificarContraseña();
             int opcion = 0;
 
             do
             {
+                
+                
                 Console.WriteLine("1.Nuevo Material Precioso");
                 Console.WriteLine("2.Nuevo Producto Alimenticio");
                 Console.WriteLine("3.Nuevo Producto Electronico");
                 Console.WriteLine("4.Salir");
                 Console.Write("Elija opcion");
-                opcion = int.Parse(Console.ReadLine());
-                switch (opcion)
+                try
                 {
-                    case 1:
-                        MaterialesPreciosos m = new MaterialesPreciosos(listaProductos.Count);
-                        m.SolicitarDetalles();
-                        listaProductos.Add(m);
-                        break;
-                    case 2:
-                        ProductosAlimenticios p = new ProductosAlimenticios(listaProductos.Count);
-                        p.SolicitarDetalles();
-                        listaProductos.Add(p);
-                        break;
-                    case 3:
-                        ProductosElectronicos e = new ProductosElectronicos(listaProductos.Count);
-                        e.SolicitarDetalles();
-                        listaProductos.Add(e);
-                        break;
-                    case 4:
-                        Console.WriteLine("Saliendo");
-                        break;
+                    opcion = int.Parse(Console.ReadLine());
+                    switch (opcion)
+                    {
+                        case 1:
+                            MaterialesPreciosos m = new MaterialesPreciosos(listaProductos.Count);
+                            m.SolicitarDetalles();
+                            listaProductos.Add(m);
+                            break;
+                        case 2:
+                            ProductosAlimenticios p = new ProductosAlimenticios(listaProductos.Count);
+                            p.SolicitarDetalles();
+                            listaProductos.Add(p);
+                            break;
+                        case 3:
+                            ProductosElectronicos e = new ProductosElectronicos(listaProductos.Count);
+                            e.SolicitarDetalles();
+                            listaProductos.Add(e);
+                            break;
+                        case 4:
+                            Console.WriteLine("Saliendo");
+                            break;
 
+                    }
                 }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error, la opcion seleccionada no esta disponible, ingrese una opcion valida");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
+
             } while (opcion != 4);
+
+            Console.ReadKey();
         }
 
         public bool CargaCompletaProducto()
         {
+            VerificarContraseña();
+            
             bool ProductosCargados = false;
             try
             {
@@ -94,7 +117,7 @@ namespace PracticaGruposPoo
                         string[] datos = linea.Split('/');
                         if (datos[0] == "0")
                         {
-                            MaterialesPreciosos m = new MaterialesPreciosos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], datos[7], datos[8], datos[9], int.Parse(datos[10]));
+                            MaterialesPreciosos m = new MaterialesPreciosos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], datos[7], bool.Parse(datos[8]), datos[9], int.Parse(datos[10]));
                             listaProductos.Add(m);
                         }
                         else if (datos[0] == "1")
@@ -104,7 +127,7 @@ namespace PracticaGruposPoo
                         }
                         else
                         {
-                            ProductosElectronicos e = new ProductosElectronicos(int.Parse(datos[1]), (datos[2]), int.Parse(datos[3]), double.Parse(datos[4]), (datos[5]), bool.Parse(datos[6]), bool.Parse(datos[7]));
+                            ProductosElectronicos e = new ProductosElectronicos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), (datos[6]), bool.Parse(datos[7]), bool.Parse(datos[8]));
                         }
                         sr.Close();
                     }
