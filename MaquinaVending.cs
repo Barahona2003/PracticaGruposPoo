@@ -246,7 +246,7 @@ namespace PracticaGruposPoo
                         string[] datos = linea.Split('/');
                         if (datos[0] == "0")
                         {
-                            MaterialesPreciosos m = new MaterialesPreciosos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], datos[7], int.Parse(datos[8]));
+                            MaterialesPreciosos m = new MaterialesPreciosos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], datos[7], bool.Parse(datos[8]), datos[9], int.Parse(datos[10]));
                             listaProductos.Add(m);
                         }
                         else if (datos[0] == "1")
@@ -256,7 +256,7 @@ namespace PracticaGruposPoo
                         }
                         else
                         {
-                            ProductosElectronicos e = new ProductosElectronicos(int.Parse(datos[1]), (datos[2]), int.Parse(datos[3]), double.Parse(datos[4]), (datos[5]), bool.Parse(datos[6]), bool.Parse(datos[7]));
+                            ProductosElectronicos e = new ProductosElectronicos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], bool.Parse(datos[7]), bool.Parse(datos[8]));
                         }
                         sr.Close();
 
