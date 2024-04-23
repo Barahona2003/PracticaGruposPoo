@@ -10,15 +10,13 @@ namespace PracticaGruposPoo
     {
         //atributos de la clase padre admin
 
-        private string nombre { get; set; }
-
         private string claveAcceso { get; set; }
 
         //constructor de la clase Admin
 
-        public Admin(string nombre, string claveAcceso)
+        public Admin(string claveAcceso)
         {
-            this.nombre = nombre;
+            
             this.claveAcceso = claveAcceso;
         }
 
