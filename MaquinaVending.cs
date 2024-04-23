@@ -223,63 +223,9 @@ namespace PracticaGruposPoo
                         Console.WriteLine("Saliendo");
                         break;
 
-                }*/
+                }
+
         }
-
-        //Clave de Administrador == Admin1234
-       /* public static void CargaCompletaProducto()
-        {
-            
-
-            bool ProductosCargados = false;
-                try
-                {
-                    if (File.Exists("Productos.txt"))
-                    {
-                        StreamReader sr = new StreamReader("Productos.txt");
-                        string linea;
-                        while ((linea = sr.ReadLine()) != null)
-                        {
-                            ProductosCargados = true;
-                            string[] datos = linea.Split('/');
-                            if (datos[0] == "0")
-                            {
-                                MaterialesPreciosos m = new MaterialesPreciosos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], datos[7], int.Parse(datos[8]);
-                                listaProductos.Add(m);
-                            }
-                            else if (datos[0] == "1")
-                            {
-                                ProductosAlimenticios p = new ProductosAlimenticios(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], datos[7]);
-                                listaProductos.Add(p);
-                            }
-                            else
-                            {
-                                ProductosElectronicos e = new ProductosElectronicos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], bool.Parse(datos[7]), bool.Parse(datos[8]));
-                            }
-                            sr.Close();
-
-
-
-
-                        }
-                    }
-                    else
-                    {
-                        File.Create("Productos.txt").Close();
-                    }
-                }
-                catch (FileNotFoundException ex)
-                {
-                    Console.WriteLine("No se encuentra el archivo de productos: " + ex.Message);
-                }
-                catch (IOException ex)
-                {
-                    Console.WriteLine("Error de E/S" + ex.Message);
-                }
-                return ProductosCargados;
-            
-            
-        }*/
 
         public static void CargaCompletaProducto()
         {
@@ -307,12 +253,12 @@ namespace PracticaGruposPoo
                         }
                         else if (datos[0] == "1")
                         {
-                            ProductosAlimenticios p = new ProductosAlimenticios(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], datos[7]);
+                            ProductosAlimenticios p = new ProductosAlimenticios(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), Informacion_Nutrcional.Parse(datos[6]));
                             listaProductos.Add(p);
                         }
                         else
                         {
-                            ProductosElectronicos e = new ProductosElectronicos(int.Parse(datos[1]), (datos[2]), int.Parse(datos[3]), double.Parse(datos[4]), (datos[5]), bool.Parse(datos[6]), bool.Parse(datos[7]));
+                            ProductosElectronicos e = new ProductosElectronicos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], bool.Parse(datos[7]), bool.Parse(datos[8]));
                         }
                         sr.Close();
                     }
