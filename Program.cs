@@ -10,11 +10,9 @@ namespace PracticaGruposPoo
 {
     internal class Program
     {
-        private static List<Producto> listaProductos;
         static MaquinaVending maquinaVending;
         static void Main(string[] args)
         {
-            listaProductos = new List<Producto>();
             maquinaVending = new MaquinaVending();
             
             //menu de seleccion de 5 opciones 

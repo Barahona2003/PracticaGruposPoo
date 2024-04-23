@@ -10,20 +10,26 @@ namespace PracticaGruposPoo
     {
         //atributos propios de la clase Materiales Preciosos
 
-        public Materiales infoMaterial { get; set; }
+        public string material { get; set; }
+
+        public string sePuedeReciclar { get; set; }
+
+        public string requisitosEspecificos { get; set; }
 
         private int peso { get; set; }
 
         //constructor de la clase MaterialesPreciosos
 
-        public MaterialesPreciosos(int id) : base(id) { }
+        public MaterialesPreciosos(int id) : base(id)  { }
 
-        public MaterialesPreciosos(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, Materiales infoMateriales, int peso/*, List<Producto> listaProductos*/) : base(id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto/*, listaProductos*/)
+        public MaterialesPreciosos(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, string material, string sePuedeReciclar, string requisitosEspecificos, int peso) : 
+            base(id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
         {
             this.tipoProducto = 1;
-            this.infoMaterial = infoMaterial;
+            this.material = material;
+            this.sePuedeReciclar = sePuedeReciclar;
+            this.requisitosEspecificos = requisitosEspecificos;
             this.peso = peso;
-            //id = listaProductos.Count;
             
         }
 
@@ -39,7 +45,10 @@ namespace PracticaGruposPoo
         public override void MostrarProducto()
         {
             base.MostrarProducto();
-            infoMaterial.MostrarMateriales();
+            Console.WriteLine("Material: " + material);
+            Console.WriteLine("Reciclable o no reciclable: " + sePuedeReciclar);
+            Console.WriteLine("Requisitos especificos: " + requisitosEspecificos);
+            Console.WriteLine("Peso: " + peso);
         }
 
         //metodo que utiliza el de clase padre producto para mostrar tambien los atributos propios de la clase MaterialesPreciosos
@@ -47,7 +56,9 @@ namespace PracticaGruposPoo
         public override void SolicitarDetalles()
         {
             base.MostrarProducto();
-            Console.WriteLine("Material: " + infoMaterial);
+            Console.WriteLine("Material: " + material);
+            Console.WriteLine("Reciclable o no reciclable: " + sePuedeReciclar);
+            Console.WriteLine("Requisitos especificos: " + requisitosEspecificos);
             Console.WriteLine("Peso: " + peso);
         }
     }

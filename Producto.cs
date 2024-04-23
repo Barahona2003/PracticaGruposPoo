@@ -21,8 +21,6 @@ namespace PracticaGruposPoo
 
         private string descripcionProducto { get; set; }
 
-        //List<Producto> listaProductos = new List<Producto>();
-
         //metodo constructor de la clase producto
 
         public Producto(int id)
@@ -30,7 +28,7 @@ namespace PracticaGruposPoo
             this.id = id;
         }
         
-        public Producto(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto/*, List<Producto> listaProductos*/)
+        public Producto(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto)
         {
             this.id = id;
             this.tipoProducto = tipoProducto;
@@ -38,14 +36,13 @@ namespace PracticaGruposPoo
             this.unidadesProducto = unidadesProducto;
             this.precioUnidadProducto = precioUnidadProducto;
             this.descripcionProducto = descripcionProducto;
-            //this.listaProductos = listaProductos;
         }
 
         //metodos de la clase productos
 
         //mostrar producto
 
-        public virtual void MostrarProductoDisponible()
+        public void MostrarProductoDisponible()
         {
             Console.WriteLine("Id: " + id);
             Console.WriteLine("Nombre: " + nombreProducto);

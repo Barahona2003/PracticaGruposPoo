@@ -69,7 +69,7 @@ namespace PracticaGruposPoo
                 Console.WriteLine("Selecciona el método de pago: ");
                 Console.WriteLine("1. Tarjeta");
                 Console.WriteLine("2. Efectivo");
-                int metodoPago = Convert.ToInt32(Console.ReadLine());
+                int metodoPago =int.Parse(Console.ReadLine());
 
                 if (metodoPago == 1)
                 {
@@ -91,7 +91,7 @@ namespace PracticaGruposPoo
                     do
                     {
                         Console.WriteLine("Cantidad total a introducir: " + efectivoRestante + "€");
-                        efectivoIntroducido += int.Parse(Console.ReadLine());
+                        efectivoIntroducido += double.Parse(Console.ReadLine());
                         efectivoRestante -= efectivoIntroducido;
                     } while (efectivoRestante > 0);
                     double cambio = efectivoIntroducido - precioTotal;
@@ -129,7 +129,7 @@ namespace PracticaGruposPoo
 
             foreach (Producto producto in listaProductos) //Mostramos cada producto en la lista de productos
             {
-                producto.MostrarProducto();
+                producto.MostrarProductoDisponible();
             }
 
             // Pedir al usuario el ID del producto
@@ -187,14 +187,15 @@ namespace PracticaGruposPoo
         //la clave de Administrador es Admin123
         public static void CargaIndividualProducto()
         {
-            Admin admin = new Admin("nombreAdmin", "claveAdmin"); // Crear una instancia de la clase Admin
+            Admin admin = new Admin("claveAdmin", listaProductos); // Crear una instancia de la clase Admin
 
             // Llamar al método VerificarContraseña() de la instancia admin
             admin.VerificarContraseña();
+            admin.CargaIndividualProducto();
 
             // Si la contraseña es correcta, se permite la carga de productos
 
-            int opcion = 0;
+            /*int opcion = 0;
                 Console.WriteLine("1.Nuevo Material Precioso");
                 Console.WriteLine("2.Nuevo Producto Alimenticio");
                 Console.WriteLine("3.Nuevo Producto Electronico");
@@ -222,11 +223,7 @@ namespace PracticaGruposPoo
                         Console.WriteLine("Saliendo");
                         break;
 
-                }
-
-
-            
-
+                }*/
         }
 
         //Clave de Administrador == Admin1234
@@ -284,14 +281,15 @@ namespace PracticaGruposPoo
             
         }*/
 
-        public static bool CargaCompletaProducto()
+        public static void CargaCompletaProducto()
         {
-            Admin admin = new Admin("nombreAdmin", "claveAdmin"); // Crear una instancia de la clase Admin
+            Admin admin = new Admin("claveAdmin", listaProductos); // Crear una instancia de la clase Admin
 
             // Llamar al método VerificarContraseña() de la instancia admin
             admin.VerificarContraseña();
+            admin.CargaCompletaProducto();
 
-            bool ProductosCargados = false;
+            /*bool ProductosCargados = false;
             try
             {
                 if (File.Exists("Productos.txt"))
@@ -304,7 +302,7 @@ namespace PracticaGruposPoo
                         string[] datos = linea.Split('/');
                         if (datos[0] == "0")
                         {
-                            MaterialesPreciosos m = new MaterialesPreciosos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], datos[7], int.Parse(datos[8]));
+                            MaterialesPreciosos m = new MaterialesPreciosos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], datos[7],datos[8], datos[9], int.Parse(datos[10]));
                             listaProductos.Add(m);
                         }
                         else if (datos[0] == "1")
@@ -317,10 +315,6 @@ namespace PracticaGruposPoo
                             ProductosElectronicos e = new ProductosElectronicos(int.Parse(datos[1]), (datos[2]), int.Parse(datos[3]), double.Parse(datos[4]), (datos[5]), bool.Parse(datos[6]), bool.Parse(datos[7]));
                         }
                         sr.Close();
-
-
-
-
                     }
                 }
                 else
@@ -336,7 +330,7 @@ namespace PracticaGruposPoo
             {
                 Console.WriteLine("Error de E/S" + ex.Message);
             }
-            return ProductosCargados;
+            return ProductosCargados;*/
         }
     }
 }
