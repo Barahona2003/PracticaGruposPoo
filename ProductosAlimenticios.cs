@@ -65,5 +65,19 @@ namespace PracticaGruposPoo
             Console.WriteLine("Introduce las grasas del producto: ");
             grasas = Convert.ToInt32(Console.ReadLine());
         }
+
+        // Convertir el producto a una string para poder guardarla en un fichero
+        public override string ToFile(){
+            string separator = ";";
+            return base.ToFile() + separator + calorias + separator + azucares + separator + grasas;
+        }
+
+        public override void FromFile(string[] data){
+            base.FromFile(data);
+            calorias = Convert.ToInt32(data[6]);
+            azucares = Convert.ToInt32(data[7]);
+            grasas = Convert.ToInt32(data[8]);
+        }
+
     }
 }

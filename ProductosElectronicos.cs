@@ -50,5 +50,11 @@ namespace PracticaGruposPoo
             Console.WriteLine("Introduce si el producto esta precargado: (y/n)");
             precargado = Console.ReadLine().ToLower().Equals("y");
         }
+
+        public override string ToFile()
+        {
+            string separator = ";";
+            return base.ToFile() + separator + tieneBateria + separator + precargado;
+        }
     }
 }

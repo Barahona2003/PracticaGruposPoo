@@ -27,7 +27,7 @@ namespace PracticaGruposPoo
                 Console.WriteLine("3. Carga individual del producto");
                 Console.WriteLine("4. Cargar completa del producto");
                 Console.WriteLine("5. Salir");
-                Console.Write("Elija opcion");
+                Console.WriteLine("Elija opcion");
                 try
                 {
                     opcion = int.Parse(Console.ReadLine());

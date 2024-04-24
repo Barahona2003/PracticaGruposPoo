@@ -32,7 +32,10 @@ namespace PracticaGruposPoo
                 claveAcceso = Console.ReadLine();
                 if (claveAcceso == "Admin1234")
                 {
-                    Console.WriteLine("Contraseña correcta");
+                    Console.Clear();
+                    Console.WriteLine("Bienvenido Admin");
+                    Console.WriteLine("Presione una tecla para continuar");
+                    Console.ReadKey();
                 }
                 else
                 {
@@ -47,11 +50,12 @@ namespace PracticaGruposPoo
 
             do
             {
-                Console.WriteLine("1.Nuevo Material Precioso");
-                Console.WriteLine("2.Nuevo Producto Alimenticio");
-                Console.WriteLine("3.Nuevo Producto Electronico");
-                Console.WriteLine("4.Salir");
-                Console.Write("Elija opcion");
+                Console.Clear();
+                Console.WriteLine("1. Nuevo Material Precioso");
+                Console.WriteLine("2. Nuevo Producto Alimenticio");
+                Console.WriteLine("3. Nuevo Producto Electronico");
+                Console.WriteLine("4. Salir");
+                Console.WriteLine("Elija opcion:");
                 try
                 {
                     opcion = int.Parse(Console.ReadLine());
@@ -73,7 +77,8 @@ namespace PracticaGruposPoo
                             listaProductos.Add(e);
                             break;
                         case 4:
-                            Console.WriteLine("Saliendo");
+                            GuardarProductos("Productos.txt");
+                            Console.WriteLine("Se han guardado los productos, saliendo...");
                             break;
 
                     }
@@ -95,43 +100,19 @@ namespace PracticaGruposPoo
             Console.ReadKey();
         }
 
-        // Funcion para guardar los productos en un archivo de texto
-
-        public bool CargaCompletaProducto()
+        // Funcion para guardar los productos de la lista de productos en un archivo de texto llamado Productos.txt
+        public void GuardarProductos(string nombre_archivo)
         {
-            
-            bool ProductosCargados = false;
             try
             {
-                if (File.Exists("Productos.txt"))
+                StreamWriter escritor_archivos = new StreamWriter(nombre_archivo);
+                // Avanzamos hasta el final del archivo
+                // escritor_archivos.BaseStream.Seek(0, SeekOrigin.End);
+                foreach (Producto p in listaProductos)
                 {
-                    StreamReader sr = new StreamReader("Productos.txt");
-                    string linea;
-                    while ((linea = sr.ReadLine()) != null)
-                    {
-                        ProductosCargados = true;
-                        string[] datos = linea.Split('/');
-                        if (datos[0] == "0")
-                        {
-                            MaterialesPreciosos m = new MaterialesPreciosos(listaProductos.Count,int.Parse(datos[1]), datos[2], int.Parse(datos[3]), double.Parse(datos[4]), datos[5], datos[6], bool.Parse(datos[7]), datos[8], int.Parse(datos[9]));
-                            listaProductos.Add(m);
-                        }
-                        else if (datos[0] == "1")
-                        {
-                            ProductosAlimenticios p = new ProductosAlimenticios(listaProductos.Count,int.Parse(datos[1]), datos[2], int.Parse(datos[3]), double.Parse(datos[4]), datos[5], int.Parse(datos[6]), int.Parse(datos[7]), int.Parse(datos[8]));
-                            listaProductos.Add(p);
-                        }
-                        else
-                        {
-                            ProductosElectronicos e = new ProductosElectronicos(listaProductos.Count,int.Parse(datos[1]), datos[2], int.Parse(datos[3]), double.Parse(datos[4]), datos[5], bool.Parse(datos[6]), bool.Parse(datos[7]));
-                        }
-                        sr.Close();
-                    }
+                    escritor_archivos.WriteLine(p.ToFile());
                 }
-                else
-                {
-                    File.Create("Productos.txt").Close();
-                }
+                escritor_archivos.Close();
             }
             catch (FileNotFoundException ex)
             {
@@ -141,7 +122,54 @@ namespace PracticaGruposPoo
             {
                 Console.WriteLine("Error de E/S" + ex.Message);
             }
-            return ProductosCargados;
+        }        
+
+        public void CargaCompletaProducto()
+        {
+            Console.Clear();
+            try
+            {
+                StreamReader lector_archivos = new StreamReader("Productos.txt");
+                string linea;
+                while ((linea = lector_archivos.ReadLine()) != null)
+                {
+                    string[] datos = linea.Split(';');
+                    switch (datos[1])
+                    {
+                        case "1":
+                            MaterialesPreciosos m = new MaterialesPreciosos(listaProductos.Count);
+                            m.FromFile(datos);
+                            listaProductos.Add(m);
+                            break;
+                        case "2":
+                            ProductosAlimenticios p = new ProductosAlimenticios(listaProductos.Count);
+                            p.FromFile(datos);
+                            listaProductos.Add(p);
+                            break;
+                        case "3":
+                            ProductosElectronicos e = new ProductosElectronicos(listaProductos.Count);
+                            e.FromFile(datos);
+                            listaProductos.Add(e);
+                            break;
+                    }
+                }
+                lector_archivos.Close();
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("No se encuentra el archivo de productos: " + ex.Message);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Error de E/S" + ex.Message);
+            }
+
+            Console.WriteLine("Productos cargados correctamente");
+            // Mostramos la lista que se ha cargado
+            foreach (Producto p in listaProductos)
+            {
+                p.MostrarProducto();
+            }
         }
     }
 }

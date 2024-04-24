@@ -82,5 +82,24 @@ namespace PracticaGruposPoo
             descripcionProducto = Console.ReadLine();
         }
 
+        // Metodo para tranformar el producto en un string para guardarlo en un archivo
+
+        public virtual string ToFile()
+        {
+            string separator = ";";
+
+            return id + separator + tipoProducto + separator + nombreProducto + separator + unidadesProducto + separator + precioUnidadProducto + separator + descripcionProducto;
+        }
+
+        public virtual void FromFile(string[] data)
+        {
+            id = Convert.ToInt32(data[0]);
+            tipoProducto = Convert.ToInt32(data[1]);
+            nombreProducto = data[2];
+            unidadesProducto = Convert.ToInt32(data[3]);
+            precioUnidadProducto = Convert.ToDouble(data[4]);
+            descripcionProducto = data[5];
+        }
+
     }
 }

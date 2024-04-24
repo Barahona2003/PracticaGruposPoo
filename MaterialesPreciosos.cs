@@ -72,5 +72,20 @@ namespace PracticaGruposPoo
             Console.WriteLine("Introduce el peso del producto: ");
             peso = Convert.ToInt32(Console.ReadLine());
         }
+
+        public override string ToFile(){
+            string separator = ";";
+            return base.ToFile() + separator + material + separator + sePuedeReciclar + separator + requisitosEspecificos + separator + peso;
+        }
+
+        public override void FromFile(string[] data)
+        {
+            base.FromFile(data);
+            material = data[6];
+            sePuedeReciclar = data[7].Equals("True");
+            requisitosEspecificos = data[8];
+            peso = Convert.ToInt32(data[9]);
+        }
+
     }
 }
