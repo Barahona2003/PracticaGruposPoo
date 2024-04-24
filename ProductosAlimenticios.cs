@@ -19,9 +19,16 @@ namespace PracticaGruposPoo
 
         //constructor de la clase ProductosAlimenticios
 
-        public ProductosAlimenticios(int id) : base(id) { }
+        public ProductosAlimenticios(int id) : base(id)
+        {
+            this.tipoProducto = 2;
+            this.calorias = -1;
+            this.azucares = -1;
+            this.grasas = -1;
+        }
 
-        public ProductosAlimenticios(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, int calorias, int azucares, int grasas) : base( id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
+        public ProductosAlimenticios(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto,
+         int calorias, int azucares, int grasas) : base(id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
         {
             this.tipoProducto = 2;
             this.calorias = calorias;

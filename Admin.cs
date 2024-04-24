@@ -43,14 +43,10 @@ namespace PracticaGruposPoo
 
         public void CargaIndividualProducto()
         {
-
-            
             int opcion = 0;
 
             do
             {
-                
-                
                 Console.WriteLine("1.Nuevo Material Precioso");
                 Console.WriteLine("2.Nuevo Producto Alimenticio");
                 Console.WriteLine("3.Nuevo Producto Electronico");
@@ -99,6 +95,8 @@ namespace PracticaGruposPoo
             Console.ReadKey();
         }
 
+        // Funcion para guardar los productos en un archivo de texto
+
         public bool CargaCompletaProducto()
         {
             
@@ -115,7 +113,7 @@ namespace PracticaGruposPoo
                         string[] datos = linea.Split('/');
                         if (datos[0] == "0")
                         {
-                            MaterialesPreciosos m = new MaterialesPreciosos(listaProductos.Count,int.Parse(datos[1]), datos[2], int.Parse(datos[3]), double.Parse(datos[4]), datos[5], datos[6], datos[7], datos[8], int.Parse(datos[9]));
+                            MaterialesPreciosos m = new MaterialesPreciosos(listaProductos.Count,int.Parse(datos[1]), datos[2], int.Parse(datos[3]), double.Parse(datos[4]), datos[5], datos[6], bool.Parse(datos[7]), datos[8], int.Parse(datos[9]));
                             listaProductos.Add(m);
                         }
                         else if (datos[0] == "1")
@@ -145,8 +143,5 @@ namespace PracticaGruposPoo
             }
             return ProductosCargados;
         }
-
-
-
     }
 }

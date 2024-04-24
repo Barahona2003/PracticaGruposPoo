@@ -12,7 +12,7 @@ namespace PracticaGruposPoo
 
         public string material { get; set; }
 
-        public string sePuedeReciclar { get; set; }
+        public bool sePuedeReciclar { get; set; }
         
         public string requisitosEspecificos { get; set; }
 
@@ -20,9 +20,16 @@ namespace PracticaGruposPoo
 
         //constructor de la clase MaterialesPreciosos
 
-        public MaterialesPreciosos(int id) : base(id)  { }
+        public MaterialesPreciosos(int id) : base(id)
+        {
+            this.tipoProducto = 1;
+            this.material = "";
+            this.sePuedeReciclar = false;
+            this.requisitosEspecificos = "";
+            this.peso = -1;
+        }
 
-        public MaterialesPreciosos(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, string material, string sePuedeReciclar, string requisitosEspecificos, int peso) : 
+        public MaterialesPreciosos(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, string material, bool sePuedeReciclar, string requisitosEspecificos, int peso) : 
             base(id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
         {
             this.tipoProducto = 1;
@@ -30,7 +37,6 @@ namespace PracticaGruposPoo
             this.sePuedeReciclar = sePuedeReciclar;
             this.requisitosEspecificos = requisitosEspecificos;
             this.peso = peso;
-            
         }
 
         //metodos de la clase MaterialesPreciosos
@@ -59,8 +65,8 @@ namespace PracticaGruposPoo
             Console.WriteLine("Tipo de producto: " + tipoProducto);
             Console.WriteLine("Introduce el material del producto: ");
             material = Console.ReadLine();
-            Console.WriteLine("Introduce si el producto es reciclable o no: ");
-            sePuedeReciclar = Console.ReadLine();
+            Console.WriteLine("Introduce si el producto se puede reciclar: (y/n)");
+            sePuedeReciclar = Console.ReadLine().ToLower().Equals("y");
             Console.WriteLine("Introduce los requisitos especificos del producto: ");
             requisitosEspecificos = Console.ReadLine();
             Console.WriteLine("Introduce el peso del producto: ");

@@ -16,9 +16,15 @@ namespace PracticaGruposPoo
 
         //constructor de la clase ProductosElectronicos
 
-        public ProductosElectronicos(int id) : base(id) { }
+        public ProductosElectronicos(int id) : base(id)
+        {
+            this.tipoProducto = 3;
+            this.tieneBateria = false;
+            this.precargado = false;
+        }
 
-        public ProductosElectronicos(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, bool tieneBateria, bool Precargado) : base(id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
+        public ProductosElectronicos(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto,
+         bool tieneBateria, bool Precargado) : base(id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
         {
             this.tipoProducto = 3;
             this.tieneBateria = tieneBateria;
@@ -39,11 +45,10 @@ namespace PracticaGruposPoo
         {
             base.SolicitarDetalles();
             Console.WriteLine("Tipo de producto: " + tipoProducto);
-            Console.WriteLine("Introduce si el producto tiene bateria: ");
-            tieneBateria = Convert.ToBoolean(Console.ReadLine());
-            Console.WriteLine("Introduce si el producto esta precargado: ");
-            precargado = Convert.ToBoolean(Console.ReadLine());
+            Console.WriteLine("Introduce si el producto tiene bateria: (y/n)");
+            tieneBateria = Console.ReadLine().ToLower().Equals("y");
+            Console.WriteLine("Introduce si el producto esta precargado: (y/n)");
+            precargado = Console.ReadLine().ToLower().Equals("y");
         }
-
     }
 }
