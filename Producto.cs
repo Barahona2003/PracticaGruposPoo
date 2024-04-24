@@ -88,7 +88,8 @@ namespace PracticaGruposPoo
         {
             string separator = ";";
 
-            return id + separator + tipoProducto + separator + nombreProducto + separator + unidadesProducto + separator + precioUnidadProducto + separator + descripcionProducto;
+            return id + separator + tipoProducto + separator + nombreProducto + separator +
+                unidadesProducto + separator + precioUnidadProducto + separator + descripcionProducto;
         }
 
         public virtual void FromFile(string[] data)
