@@ -37,9 +37,12 @@ namespace PracticaGruposPoo
         //metodo que utiliza el de clase padre producto para solicitar tambien los atributos propios de la clase ProductosElectronicos
         public override void SolicitarDetalles()
         {
-            base.MostrarProducto();
-            Console.WriteLine("Tiene bateria: " + tieneBateria);
-            Console.WriteLine("Precargado: " + precargado);
+            base.SolicitarDetalles();
+            Console.WriteLine("Tipo de producto: " + tipoProducto);
+            Console.WriteLine("Introduce si el producto tiene bateria: ");
+            tieneBateria = Convert.ToBoolean(Console.ReadLine());
+            Console.WriteLine("Introduce si el producto esta precargado: ");
+            precargado = Convert.ToBoolean(Console.ReadLine());
         }
 
     }

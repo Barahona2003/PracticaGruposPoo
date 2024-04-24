@@ -80,6 +80,7 @@ namespace PracticaGruposPoo
                     string pin = Console.ReadLine();
                     Console.WriteLine("Introduce el nombre del propietario:");
                     string nombrePropietario = Console.ReadLine();
+                    Console.WriteLine("Gracias por su compra, su producto esta siendo proporcionado.");
                     // Lógica para procesar el pago con tarjeta
                 }
                 else if (metodoPago == 2)
@@ -96,6 +97,7 @@ namespace PracticaGruposPoo
                     } while (efectivoRestante > 0);
                     double cambio = efectivoIntroducido - precioTotal;
                     Console.WriteLine("Cambio devuelto: " + cambio + "€");
+                    Console.WriteLine("Gracias por su compra, su producto esta siendo proporcionado.");
                 }
                 else
                 {

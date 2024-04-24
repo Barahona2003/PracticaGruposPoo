@@ -50,9 +50,13 @@ namespace PracticaGruposPoo
         public override void SolicitarDetalles()
         {
             base.SolicitarDetalles();
-            Console.WriteLine("Calorias: " + calorias + "kcal");
-            Console.WriteLine("Azúcares: " + azucares + "g");
-            Console.WriteLine("Grasas: " + grasas + "g");
+            Console.WriteLine("Tipo de producto: " + tipoProducto);
+            Console.WriteLine("Introduce las calorias del producto: ");
+            calorias = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Introduce los azucares del producto: ");
+            azucares = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Introduce las grasas del producto: ");
+            grasas = Convert.ToInt32(Console.ReadLine());
         }
     }
 }

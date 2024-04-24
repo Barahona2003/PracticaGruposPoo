@@ -12,8 +12,8 @@ namespace PracticaGruposPoo
 
         public string material { get; set; }
 
-        public bool sePuedeReciclar { get; set; }
-
+        public string sePuedeReciclar { get; set; }
+        
         public string requisitosEspecificos { get; set; }
 
         private int peso { get; set; }
@@ -22,7 +22,7 @@ namespace PracticaGruposPoo
 
         public MaterialesPreciosos(int id) : base(id)  { }
 
-        public MaterialesPreciosos(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, string material, bool sePuedeReciclar, string requisitosEspecificos, int peso) : 
+        public MaterialesPreciosos(int id, int tipoProducto, string nombreProducto, int unidadesProducto, double precioUnidadProducto, string descripcionProducto, string material, string sePuedeReciclar, string requisitosEspecificos, int peso) : 
             base(id, tipoProducto, nombreProducto, unidadesProducto, precioUnidadProducto, descripcionProducto)
         {
             this.tipoProducto = 1;
@@ -55,11 +55,16 @@ namespace PracticaGruposPoo
 
         public override void SolicitarDetalles()
         {
-            base.MostrarProducto();
-            Console.WriteLine("Material: " + material);
-            Console.WriteLine("Reciclable o no reciclable: " + sePuedeReciclar);
-            Console.WriteLine("Requisitos especificos: " + requisitosEspecificos);
-            Console.WriteLine("Peso: " + peso);
+            base.SolicitarDetalles();
+            Console.WriteLine("Tipo de producto: " + tipoProducto);
+            Console.WriteLine("Introduce el material del producto: ");
+            material = Console.ReadLine();
+            Console.WriteLine("Introduce si el producto es reciclable o no: ");
+            sePuedeReciclar = Console.ReadLine();
+            Console.WriteLine("Introduce los requisitos especificos del producto: ");
+            requisitosEspecificos = Console.ReadLine();
+            Console.WriteLine("Introduce el peso del producto: ");
+            peso = Convert.ToInt32(Console.ReadLine());
         }
     }
 }

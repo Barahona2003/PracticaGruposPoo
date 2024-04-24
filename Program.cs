@@ -14,8 +14,9 @@ namespace PracticaGruposPoo
         static void Main(string[] args)
         {
             maquinaVending = new MaquinaVending();
+
+            //menu de seleccion de 5 opciones con las funciones de la maquina de vending
             
-            //menu de seleccion de 5 opciones 
             int opcion = 0;
             do
             {

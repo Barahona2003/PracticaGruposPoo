@@ -72,8 +72,6 @@ namespace PracticaGruposPoo
         
         public virtual void SolicitarDetalles()
         {
-            Console.WriteLine("Introduce el tipo de producto: ");
-            tipoProducto = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Introduce el nombre del producto: ");
             nombreProducto = Console.ReadLine();
             Console.WriteLine("Introduce las unidades del producto: ");
