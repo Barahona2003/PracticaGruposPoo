@@ -191,41 +191,11 @@ namespace PracticaGruposPoo
         {
             Admin admin = new Admin("claveAdmin", listaProductos); // Crear una instancia de la clase Admin
 
-            // Llamar al método VerificarContraseña() de la instancia admin
+            // Llamar al método VerificarContraseña() de la instancia admin y al método CargaIndividualProducto()
             admin.VerificarContraseña();
             admin.CargaIndividualProducto();
 
-            // Si la contraseña es correcta, se permite la carga de productos
-
-            /*int opcion = 0;
-                Console.WriteLine("1.Nuevo Material Precioso");
-                Console.WriteLine("2.Nuevo Producto Alimenticio");
-                Console.WriteLine("3.Nuevo Producto Electronico");
-                Console.WriteLine("4.Salir");
-                Console.Write("Elija opcion");
-                opcion = int.Parse(Console.ReadLine());
-                switch (opcion)
-                {
-                    case 1:
-                        MaterialesPreciosos m = new MaterialesPreciosos(listaProductos.Count);
-                        m.SolicitarDetalles();
-                        listaProductos.Add(m);
-                        break;
-                    case 2:
-                        ProductosAlimenticios p = new ProductosAlimenticios(listaProductos.Count);
-                        p.SolicitarDetalles();
-                        listaProductos.Add(p);
-                        break;
-                    case 3:
-                        ProductosElectronicos e = new ProductosElectronicos(listaProductos.Count);
-                        e.SolicitarDetalles();
-                        listaProductos.Add(e);
-                        break;
-                    case 4:
-                        Console.WriteLine("Saliendo");
-                        break;
-
-                }*/
+            
 
         }
            
@@ -233,52 +203,11 @@ namespace PracticaGruposPoo
         {
             Admin admin = new Admin("claveAdmin", listaProductos); // Crear una instancia de la clase Admin
 
-            // Llamar al método VerificarContraseña() de la instancia admin
+            // Llamar al método VerificarContraseña() de la instancia admin y al método CargaCompletaProducto()
             admin.VerificarContraseña();
             admin.CargaCompletaProducto();
 
-            /*bool ProductosCargados = false;
-            try
-            {
-                if (File.Exists("Productos.txt"))
-                {
-                    StreamReader sr = new StreamReader("Productos.txt");
-                    string linea;
-                    while ((linea = sr.ReadLine()) != null)
-                    {
-                        ProductosCargados = true;
-                        string[] datos = linea.Split('/');
-                        if (datos[0] == "0")
-                        {
-                            MaterialesPreciosos m = new MaterialesPreciosos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], datos[7],datos[8], datos[9], int.Parse(datos[10]));
-                            listaProductos.Add(m);
-                        }
-                        else if (datos[0] == "1")
-                        {
-                            ProductosAlimenticios p = new ProductosAlimenticios(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), Informacion_Nutrcional.Parse(datos[6]));
-                            listaProductos.Add(p);
-                        }
-                        else
-                        {
-                            ProductosElectronicos e = new ProductosElectronicos(int.Parse(datos[1]), int.Parse(datos[2]), datos[3], int.Parse(datos[4]), double.Parse(datos[5]), datos[6], bool.Parse(datos[7]), bool.Parse(datos[8]));
-                        }
-                        sr.Close();
-                    }
-                }
-                else
-                {
-                    File.Create("Productos.txt").Close();
-                }
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine("No se encuentra el archivo de productos: " + ex.Message);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine("Error de E/S" + ex.Message);
-            }
-            return ProductosCargados;*/
+            
         }
     }
 }
