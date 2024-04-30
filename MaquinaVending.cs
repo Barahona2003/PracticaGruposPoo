@@ -26,6 +26,12 @@ namespace PracticaGruposPoo
             int udsSeleccionadas = 0;
             bool continuarCompra = true;
 
+            if (listaProductos.Count == 0)
+            {
+                seguirComprando = false;
+                Console.WriteLine("No hay productos en el stock de la máquina. Volviendo al menu principal...");
+            }
+
             while (seguirComprando)
             {
                 do      //Entramos dentro del bucle do-while que se seguirá ejecutando mientras la var bool sea true
@@ -113,40 +119,49 @@ namespace PracticaGruposPoo
         //Funcion para mostrar las caracteristicas del producto
         public static void MostrarProducto()
         {
-            foreach (Producto producto in listaProductos) //Mostramos cada producto en la lista de productos
+            if (listaProductos.Count == 0)
             {
-                producto.MostrarProductoDisponible();
+                Console.WriteLine("No hay produtos en el stock de la máquina. Volviendo al menu principal...");
             }
-
-            // Pedir al usuario el ID del producto
-            Console.WriteLine("Introduce el ID del producto:");
-            int idProducto = int.Parse(Console.ReadLine());
-
-            //Por cada producto en la lista, si la id que hemos introducido coincide con la de algún producto
-            //mostrará su información detallada dependiendo de si es un material precioso, producto alimenticio o producto electrónico
-
-            foreach (Producto producto in listaProductos) 
+            else
             {
-                if (idProducto == producto.id)
+                foreach (Producto producto in listaProductos) //Mostramos cada producto en la lista de productos
                 {
-                    if (producto is ProductosAlimenticios)
+                    producto.MostrarProductoDisponible();
+                }
+
+                // Pedir al usuario el ID del producto
+                Console.WriteLine("\nIntroduce el ID del producto:");
+                int idProducto = int.Parse(Console.ReadLine());
+
+                //Por cada producto en la lista, si la id que hemos introducido coincide con la de algún producto
+                //mostrará su información detallada dependiendo de si es un material precioso, producto alimenticio o producto electrónico
+
+                foreach (Producto producto in listaProductos)
+                {
+                    if (idProducto == producto.id)
                     {
-                        ((ProductosAlimenticios)producto).MostrarProducto();
+                        if (producto is ProductosAlimenticios)
+                        {
+                            ((ProductosAlimenticios)producto).MostrarProducto();
+                        }
+                        if (producto is ProductosElectronicos)
+                        {
+                            ((ProductosElectronicos)producto).MostrarProducto();
+                        }
+                        if (producto is MaterialesPreciosos)
+                        {
+                            ((MaterialesPreciosos)producto).MostrarProducto();
+                        }
                     }
-                    if (producto is ProductosElectronicos)
+                    else
                     {
-                        ((ProductosElectronicos)producto).MostrarProducto();
-                    }
-                    if (producto is MaterialesPreciosos)
-                    {
-                        ((MaterialesPreciosos)producto).MostrarProducto();
+                        Console.WriteLine("Producto no encontrado");
                     }
                 }
-                else
-                {
-                    Console.WriteLine("Producto no encontrado");
-                }
             }
+
+            
         }
 
         //la clave de Administrador es Admin123

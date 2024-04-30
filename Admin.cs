@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -54,11 +55,11 @@ namespace PracticaGruposPoo
                 // escritor_archivos.BaseStream.Seek(0, SeekOrigin.End);
                 foreach (Producto p in listaProductos)
                 {
-                    escritor_archivos.WriteLine(p.ToFile());
+                    escritor_archivos.WriteLine(p.ToFile());    //Escribimos en el fichero lo que hay almacenado en la lista de productos llamando al método ToFile
                 }
-                escritor_archivos.Close();
+                escritor_archivos.Close();  //Cerramos el lector de ficheros
             }
-            catch (FileNotFoundException ex)
+            catch (FileNotFoundException ex)    //Excepciones
             {
                 Console.WriteLine("No se encuentra el archivo de productos: " + ex.Message);
             }
@@ -72,6 +73,7 @@ namespace PracticaGruposPoo
         {
             int opcion = 0;
 
+            //El bucle se seguirá ejecutando mientras no elijamos la opción 4
             do
             {
                 Console.Clear();
@@ -82,13 +84,13 @@ namespace PracticaGruposPoo
                 Console.WriteLine("Elija opcion:");
                 try
                 {
-                    opcion = int.Parse(Console.ReadLine());
+                    opcion = int.Parse(Console.ReadLine()); //Según a opción llamamos a un caso
                     switch (opcion)
                     {
                         case 1:
-                            MaterialesPreciosos m = new MaterialesPreciosos(listaProductos.Count);
-                            m.SolicitarDetalles();
-                            listaProductos.Add(m);
+                            MaterialesPreciosos m = new MaterialesPreciosos(listaProductos.Count);  //Llamamos al constructor para almacenar el count de la lista como el id
+                            m.SolicitarDetalles();  //Llamamos al método SolicitarDetalles de la clase 
+                            listaProductos.Add(m);  //Añadimos el producto ya con todas sus características en la lista de productos
                             break;
                         case 2:
                             ProductosAlimenticios p = new ProductosAlimenticios(listaProductos.Count);
@@ -107,7 +109,7 @@ namespace PracticaGruposPoo
 
                     }
                 }
-                catch (FormatException)
+                catch (FormatException) //Excepciones
                 {
                     Console.WriteLine("Error, la opcion seleccionada no esta disponible, ingrese una opcion valida");
                 }
@@ -121,7 +123,6 @@ namespace PracticaGruposPoo
 
             } while (opcion != 4);
 
-            Console.ReadKey();
         }       
 
         public void CargaCompletaProducto()
@@ -129,17 +130,17 @@ namespace PracticaGruposPoo
             Console.Clear();
             try
             {
-                StreamReader lector_archivos = new StreamReader("Productos.txt");
+                StreamReader lector_archivos = new StreamReader("Productos.txt"); //Llamamos a la clase StreamReader para poder leer el fichero
                 string linea;
-                while ((linea = lector_archivos.ReadLine()) != null)
+                while ((linea = lector_archivos.ReadLine()) != null)    //Mientras no haya una línea en blanco se seguirá leyendo el fichero
                 {
-                    string[] datos = linea.Split(';');
-                    switch (datos[1])
+                    string[] datos = linea.Split(';');  //Almacenamos el separador del fichero de texto en una variable
+                    switch (datos[1])   //Dependiendo de si el roducto es un material precioso, un producto alimenticio o electrónico se llamará a uno de los tres casos
                     {
                         case "1":
-                            MaterialesPreciosos m = new MaterialesPreciosos(listaProductos.Count);
-                            m.FromFile(datos);
-                            listaProductos.Add(m);
+                            MaterialesPreciosos m = new MaterialesPreciosos(listaProductos.Count);  //Llamamos al constructor para almacenar el count de la lista como el id
+                            m.FromFile(datos);  //Llamamos al método FromFile de la clase 
+                            listaProductos.Add(m);  //Añadimos el producto ya con todas sus características en la lista de productos
                             break;
                         case "2":
                             ProductosAlimenticios p = new ProductosAlimenticios(listaProductos.Count);
@@ -153,9 +154,9 @@ namespace PracticaGruposPoo
                             break;
                     }
                 }
-                lector_archivos.Close();
+                lector_archivos.Close();    //Cerramos el lector de ficheros
             }
-            catch (FileNotFoundException ex)
+            catch (FileNotFoundException ex)    //Excepciones en caso de que no encontremos el fichero
             {
                 Console.WriteLine("No se encuentra el archivo de productos: " + ex.Message);
             }

@@ -47,6 +47,7 @@ namespace PracticaGruposPoo
                             break;
                         case 5:
                             Console.WriteLine("Saliendo");
+                            Console.WriteLine("Presione para continuar");
                             break;
 
                     }
@@ -60,8 +61,6 @@ namespace PracticaGruposPoo
                     Console.WriteLine("Error: " + ex.Message);
                 }
                 
-                Console.WriteLine("Presione una tecla para continuar");
-                Console.ReadKey();
             }
             while (opcion != 5);
 

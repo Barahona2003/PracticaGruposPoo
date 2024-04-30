@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PracticaGruposPoo
 {
-    internal class Producto
+    internal abstract class Producto
     {
         //atributos de la clase productos tipo_producto, nombre_producto, unidades_producto, precio_unidad_producto, descripcion_producto
 
@@ -91,6 +91,8 @@ namespace PracticaGruposPoo
             return id + separator + tipoProducto + separator + nombreProducto + separator +
                 unidadesProducto + separator + precioUnidadProducto + separator + descripcionProducto;
         }
+
+        //public abstract void FromFile();
 
         public virtual void FromFile(string[] data)
         {

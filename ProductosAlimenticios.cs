@@ -57,7 +57,7 @@ namespace PracticaGruposPoo
         public override void SolicitarDetalles()
         {
             base.SolicitarDetalles();
-            Console.WriteLine("Tipo de producto: " + tipoProducto);
+            //Console.WriteLine("Tipo de producto: " + tipoProducto);
             Console.WriteLine("Introduce las calorias del producto: ");
             calorias = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Introduce los azucares del producto: ");
@@ -72,7 +72,8 @@ namespace PracticaGruposPoo
             return base.ToFile() + separator + calorias + separator + azucares + separator + grasas;
         }
 
-        public override void FromFile(string[] data){
+        //Método que toma los atributos del método de la clase producto y añade también los atributos de esta clase
+        public override void FromFile(string[] data){   
             base.FromFile(data);
             calorias = Convert.ToInt32(data[6]);
             azucares = Convert.ToInt32(data[7]);
