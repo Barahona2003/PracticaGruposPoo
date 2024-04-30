@@ -12,7 +12,8 @@ namespace PracticaGruposPoo
     {
         private static List<Producto> listaProductos; // 12 slots de productos, con x stock por producto
 
-        public MaquinaVending() 
+        //Constructor para el instanciamiento en la clase Program recibiendo los datos de la lista que hay en este
+        public MaquinaVending()
         {
             listaProductos = new List<Producto>();
         }
@@ -112,23 +113,6 @@ namespace PracticaGruposPoo
         //Funcion para mostrar las caracteristicas del producto
         public static void MostrarProducto()
         {
-            // Mostrar los productos disponibles
-            /*foreach (Producto producto in listaProductos)
-            {
-                if (producto is ProductosAlimenticios)
-                {
-                    ((ProductosAlimenticios)producto).MostrarProducto();
-                }
-                if (producto is ProductosElectronicos)
-                {
-                    ((ProductosElectronicos)producto).MostrarProducto();
-                }
-                if (producto is MaterialesPreciosos)
-                {
-                    ((MaterialesPreciosos)producto).MostrarProducto();
-                }
-            }*/
-
             foreach (Producto producto in listaProductos) //Mostramos cada producto en la lista de productos
             {
                 producto.MostrarProductoDisponible();
@@ -163,45 +147,21 @@ namespace PracticaGruposPoo
                     Console.WriteLine("Producto no encontrado");
                 }
             }
-
-            // Buscar el producto en la lista de productos
-            /*Producto productoSeleccionado = listaProductos.FirstOrDefault(p => p.id == idProducto);
-
-            if (productoSeleccionado != null)
-            {
-                // Mostrar la información del producto
-                Console.WriteLine("Información del producto:");
-                Console.WriteLine("ID: " + productoSeleccionado.id);
-                Console.WriteLine("Tipo de producto: " + productoSeleccionado.tipoProducto);
-                Console.WriteLine("Nombre: " + productoSeleccionado.nombreProducto);
-                Console.WriteLine("Precio: " + productoSeleccionado.Precio);
-                Console.WriteLine("Descripción: " + productoSeleccionado.descripcionProducto);
-                Console.WriteLine("Cantidad disponible: " + productoSeleccionado.unidadesProducto);
-            }
-            else
-            {
-                Console.WriteLine("Producto no encontrado.");
-            }*/
-
-
         }
 
         //la clave de Administrador es Admin123
         public static void CargaIndividualProducto()
         {
-            Admin admin = new Admin("claveAdmin", listaProductos); // Crear una instancia de la clase Admin
+            Admin admin = new Admin("Admin1234", listaProductos); // Crear una instancia de la clase Admin
 
             // Llamar al método VerificarContraseña() de la instancia admin y al método CargaIndividualProducto()
             admin.VerificarContraseña();
             admin.CargaIndividualProducto();
-
-            
-
         }
            
         public static void CargaCompletaProducto()
         {
-            Admin admin = new Admin("claveAdmin", listaProductos); // Crear una instancia de la clase Admin
+            Admin admin = new Admin("Admin1234", listaProductos); // Crear una instancia de la clase Admin
 
             // Llamar al método VerificarContraseña() de la instancia admin y al método CargaCompletaProducto()
             admin.VerificarContraseña();

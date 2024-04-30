@@ -14,7 +14,7 @@ namespace PracticaGruposPoo
 
         public bool precargado { get; set; }
 
-        //constructor de la clase ProductosElectronicos
+        //constructor de la clase ProductosElectronicos 
 
         public ProductosElectronicos(int id) : base(id)
         {

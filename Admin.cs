@@ -21,16 +21,16 @@ namespace PracticaGruposPoo
             this.listaProductos = listaProductos;
         }
 
-        //metodo para verificar la contraseña del admin si la contrseña es igual a Admin1234 podra continuar si no se le dara un mensaje de error
+        //Método para verificar la contraseña del admin si la contraseña es igual a claveAcceso (Admin1234) podra continuar si no se le dara un mensaje de error
         //de contraseña invalida y se le pedira que vuelva a intentarlo
         public void VerificarContraseña()
         {
-            string claveAcceso;
+            string contraseña;
             do
             {
                 Console.WriteLine("Introduce la contraseña: ");
-                claveAcceso = Console.ReadLine();
-                if (claveAcceso == "Admin1234")
+                contraseña = Console.ReadLine();
+                if (this.claveAcceso == contraseña)
                 {
                     Console.Clear();
                     Console.WriteLine("Bienvenido Admin");
@@ -41,7 +41,31 @@ namespace PracticaGruposPoo
                 {
                     Console.WriteLine("Contraseña incorrecta, vuelve a intentarlo");
                 }
-            } while (claveAcceso != "Admin1234");
+            } while (contraseña != claveAcceso);
+        }
+
+        // Funcion para guardar los productos de la lista de productos en un archivo de texto llamado Productos.txt
+        public void GuardarProductos(string nombre_archivo)
+        {
+            try
+            {
+                StreamWriter escritor_archivos = new StreamWriter(nombre_archivo);
+                // Avanzamos hasta el final del archivo
+                // escritor_archivos.BaseStream.Seek(0, SeekOrigin.End);
+                foreach (Producto p in listaProductos)
+                {
+                    escritor_archivos.WriteLine(p.ToFile());
+                }
+                escritor_archivos.Close();
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine("No se encuentra el archivo de productos: " + ex.Message);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Error de E/S" + ex.Message);
+            }
         }
 
         public void CargaIndividualProducto()
@@ -98,31 +122,7 @@ namespace PracticaGruposPoo
             } while (opcion != 4);
 
             Console.ReadKey();
-        }
-
-        // Funcion para guardar los productos de la lista de productos en un archivo de texto llamado Productos.txt
-        public void GuardarProductos(string nombre_archivo)
-        {
-            try
-            {
-                StreamWriter escritor_archivos = new StreamWriter(nombre_archivo);
-                // Avanzamos hasta el final del archivo
-                // escritor_archivos.BaseStream.Seek(0, SeekOrigin.End);
-                foreach (Producto p in listaProductos)
-                {
-                    escritor_archivos.WriteLine(p.ToFile());
-                }
-                escritor_archivos.Close();
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine("No se encuentra el archivo de productos: " + ex.Message);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine("Error de E/S" + ex.Message);
-            }
-        }        
+        }       
 
         public void CargaCompletaProducto()
         {

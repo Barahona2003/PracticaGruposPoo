@@ -34,16 +34,16 @@ namespace PracticaGruposPoo
                     switch (opcion)
                     {
                         case 1:
-                            MaquinaVending.ComprarProducto();
+                            MaquinaVending.ComprarProducto();   //Llamamiento al método ComprarProducto de la clase MaquinaVending
                             break;
                         case 2:
-                            MaquinaVending.MostrarProducto();
+                            MaquinaVending.MostrarProducto();   //Llamamiento al método MostrarProducto de la clase MaquinaVending
                             break;
                         case 3:
-                            MaquinaVending.CargaIndividualProducto();
+                            MaquinaVending.CargaIndividualProducto();   //Llamamiento al método CargaIndividualProducto de la clase MaquinaVending
                             break;
                         case 4:
-                            MaquinaVending.CargaCompletaProducto();
+                            MaquinaVending.CargaCompletaProducto(); //Llamamiento al método CargaCompletaProducto de la clase MaquinaVending
                             break;
                         case 5:
                             Console.WriteLine("Saliendo");
@@ -51,7 +51,7 @@ namespace PracticaGruposPoo
 
                     }
                 }
-                catch (FormatException)
+                catch (FormatException)     //Excepciones en caso de fallo
                 {
                     Console.WriteLine("Error, la opcion seleccionada no esta disponible, ingrese una opcion valida");
                 }
